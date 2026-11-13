@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --color-ink: #111111;
+  --color-paper: #ffffff;
+  --color-ivory: #f7f3ec;
+  --color-espresso: #4b3025;
+  --color-caramel: #a87950;
+  --color-latte: #d9c3a5;
+  --color-muted: #5e564f;
+  --color-line: #e7e0d6;
+}
+
+:root {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-ink: #ffffff;
+  --color-paper: #111111;
+  --color-ivory: #1c1c1c;
+  --color-espresso: #d9c3a5;
+  --color-muted: #c9bfb4;
+  --color-line: #2e2e2e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
